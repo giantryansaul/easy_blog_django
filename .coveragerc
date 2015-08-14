@@ -1,0 +1,3 @@
+[run]
+include = easy_blog_django/*
+omit = *migrations*
