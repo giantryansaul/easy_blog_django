@@ -28,6 +28,16 @@ EMAIL_PORT = 1025
 EMAIL_BACKEND = env('DJANGO_EMAIL_BACKEND',
                     default='django.core.mail.backends.console.EmailBackend')
 
+# DATABASE CONFIGURATION
+# ------------------------------------------------------------------------------
+# See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
+DATABASES = {
+    # Raises ImproperlyConfigured exception if DATABASE_URL not in os.environ
+    # Example: postgres://db_owner:password@dbserver_ip:port/db_name
+    'default': env.db("DATABASE_URL", default="postgres://easyuser:password@localhost/easy_blog_django"),
+}
+DATABASES['default']['ATOMIC_REQUESTS'] = True
+
 # CACHING
 # ------------------------------------------------------------------------------
 CACHES = {

@@ -100,7 +100,7 @@ MANAGERS = ADMINS
 DATABASES = {
     # Raises ImproperlyConfigured exception if DATABASE_URL not in os.environ
     # Example: postgres://db_owner:password@dbserver_ip:port/db_name
-    'default': env.db("DATABASE_URL", default="postgres://easyuser:password@localhost/easy_blog_django"),
+    'default': env.db("DATABASE_URL", default="postgres:///easy_blog_django"),
 }
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
