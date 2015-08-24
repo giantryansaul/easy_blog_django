@@ -18,7 +18,8 @@ urlpatterns = [
     url(r'^users/', include("easy_blog_django.users.urls", namespace="users")),
     url(r'^accounts/', include('allauth.urls')),
 
-    # Your stuff: custom urls includes go here
+    # Blog stuff
+    url(r'^posts/', include('easy_blog_django.posts.urls', namespace='posts')),
 
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

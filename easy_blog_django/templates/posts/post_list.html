@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Posts - {{ block.super }}{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+    <h2>Past Posts</h2>
+
+    <div class="list-group">
+        {% for post in post_list %}
+          <a href="{% url 'posts:detail' post.pk %}" class="list-group-item">
+            <h4 class="list-group-item-heading">{{ post.title }}</h4>
+          </a>
+        {% endfor %}
+
+    </div>
+
+{% endblock content %}
