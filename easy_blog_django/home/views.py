@@ -8,7 +8,7 @@ class LastPostMixIn(object):
     def get_context_data(self, **kwargs):
         context = super(LastPostMixIn, self).get_context_data(**kwargs)
         try:
-            last_post = Post.objects.earliest('created')
+            last_post = Post.objects.latest('created')
             context['last_post'] = last_post
             return context
         except Post.DoesNotExist, does_not_exist:
