@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 {% block title %}Homepage - {{ block.super }}{% endblock %}
 {% block content %}
-{{ last_post.title }}
+
+        <a href="{% url 'posts:detail' last_post.pk %}">
+            <h4>{{ last_post.title }}</h4>
+        </a>
+
 {% endblock %}
