@@ -9,6 +9,7 @@ class LastPostMixIn(object):
         context = super(LastPostMixIn, self).get_context_data(**kwargs)
         last_post = Post.objects.earliest('created')
         context['last_post'] = last_post
+        return context
 
 
 class HomeView(LastPostMixIn, TemplateView):
