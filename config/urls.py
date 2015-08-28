@@ -8,7 +8,8 @@ from django.contrib import admin
 from django.views.generic import TemplateView
 
 urlpatterns = [
-    url(r'^$', TemplateView.as_view(template_name='pages/home.html'), name="home"),
+    #url(r'^$', TemplateView.as_view(template_name='pages/home.html'), name="index"),
+    #url(r'^$', include('easy_blog_django.home.views.index', namespace="home")),
     url(r'^about/$', TemplateView.as_view(template_name='pages/about.html'), name="about"),
 
     # Django Admin
@@ -18,8 +19,9 @@ urlpatterns = [
     url(r'^users/', include("easy_blog_django.users.urls", namespace="users")),
     url(r'^accounts/', include('allauth.urls')),
 
-    # Blog stuff
-    url(r'^posts/', include('easy_blog_django.posts.urls', namespace='posts')),
+    # Blog apps
+    url(r'^posts/', include('easy_blog_django.posts.urls', namespace="posts")),
+    url(r'^$', include('easy_blog_django.home.urls')),
 
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -44,8 +44,8 @@ THIRD_PARTY_APPS = (
 # Apps specific for this project go here.
 LOCAL_APPS = (
     'easy_blog_django.users',  # custom users app
-    'easy_blog_django.posts',  # custom blog app
-    # Your stuff: custom apps go here
+    'easy_blog_django.posts',  # posts app
+    'easy_blog_django.home',  # home page app
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps

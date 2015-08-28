@@ -29,4 +29,5 @@ class PostCreateView(LoginRequiredMixin, CreateView):
     fields = ('title', 'description')
 
     def form_valid(self, form):
+
         return super(PostCreateView, self).form_valid(form)
