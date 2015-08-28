@@ -7,9 +7,14 @@ class LastPostMixIn(object):
 
     def get_context_data(self, **kwargs):
         context = super(LastPostMixIn, self).get_context_data(**kwargs)
-        last_post = Post.objects.earliest('created')
-        context['last_post'] = last_post
-        return context
+        try:
+            last_post = Post.objects.earliest('created')
+            context['last_post'] = last_post
+            return context
+        except Post.DoesNotExist, does_not_exist:
+            raise does_not_exist
+        except Post.MultipleObjectsReturned, multiple_objects_returned:
+            raise multiple_objects_returned
 
 
 class HomeView(LastPostMixIn, TemplateView):
