@@ -5,6 +5,11 @@
         <a href="{% url 'posts:detail' last_post.pk %}">
             <h4>{{ last_post.title }}</h4>
         </a>
-        <p>{{ last_post.description|safe|truncatewords:"50"|linebreaks }}</p>
+        <p>
+            {{ last_post.description|safe|truncatewords:"140"|linebreaks }}
+        </p>
+        <a href="{% url 'posts:detail' last_post.pk %}">
+            Read More
+        </a>
 
 {% endblock %}
