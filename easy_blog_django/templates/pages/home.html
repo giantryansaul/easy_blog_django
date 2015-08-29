@@ -3,13 +3,19 @@
 {% block content %}
 
         <a href="{% url 'posts:detail' last_post.pk %}">
-            <h4>{{ last_post.title }}</h4>
+            <h2>Latest Story: {{ last_post.title }}</h2>
+        </a>
+
+        {% for post in most_recent_posts %}
+        <a href="{% url 'posts:detail' post.pk %}">
+            <h4>{{ post.title }}</h4>
         </a>
         <p>
-            {{ last_post.description|safe|truncatewords:"140"|linebreaks }}
+            {{ post.description|safe|truncatewords:"140"|linebreaks }}
         </p>
-        <a href="{% url 'posts:detail' last_post.pk %}">
+        <a href="{% url 'posts:detail' post.pk %}">
             Read More
         </a>
+        {% endfor %}
 
 {% endblock %}
