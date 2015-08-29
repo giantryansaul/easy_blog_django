@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 
 from ..core.models import TimeStampedModel
 
@@ -15,8 +16,7 @@ class Post(TimeStampedModel):
     title = models.CharField(max_length=255)
     description = models.TextField(blank=True)
     published = models.BooleanField(default=False)
-    # TODO: Add author field
-    #author = models.ForeignKey(User, blank=True, null=True)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL)
 
     # Add custom model manager
     objects = PostManager()

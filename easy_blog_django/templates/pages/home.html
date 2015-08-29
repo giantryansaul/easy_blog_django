@@ -10,12 +10,15 @@
         <a href="{% url 'posts:detail' post.pk %}">
             <h4>{{ post.title }}</h4>
         </a>
+        <small>{{ post.created }}</small><p/>
+        <small>By {{ post.author.name }}</small>
         <p>
             {{ post.description|safe|truncatewords:"140"|linebreaks }}
         </p>
         <a href="{% url 'posts:detail' post.pk %}">
             Read More
         </a>
+        <p>&NoBreak;</p>
         {% endfor %}
 
 {% endblock %}

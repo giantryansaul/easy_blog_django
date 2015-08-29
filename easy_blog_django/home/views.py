@@ -7,6 +7,7 @@ class LastPostMixIn(object):
     """
     Returns the most recent post. Only returns a single post.
     """
+    #TODO: Use for jumbotron
     def get_context_data(self, **kwargs):
         context = super(LastPostMixIn, self).get_context_data(**kwargs)
         try:
