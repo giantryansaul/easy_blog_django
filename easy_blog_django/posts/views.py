@@ -18,6 +18,9 @@ class PostResultsView(PostDetailView):
 
 
 class PostUpdateView(LoginRequiredMixin, UpdateView):
+    #TODO: Add security layer so only admins can edit.
+    fields = ['title', 'description', 'tags', ]
+
     model = Post
 
     def get_success_url(self):
