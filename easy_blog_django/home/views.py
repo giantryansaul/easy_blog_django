@@ -30,7 +30,7 @@ class MostRecentPostsMixIn(object):
         context = super(MostRecentPostsMixIn, self).get_context_data(**kwargs)
         try:
             most_recent_posts = Post.objects.published()
-            most_recent_posts = most_recent_posts.order_by('-created')[:10]
+            most_recent_posts = most_recent_posts.order_by('-created')[:5]
             context['most_recent_posts'] = most_recent_posts
             return context
         except Post.DoesNotExist, does_not_exist:

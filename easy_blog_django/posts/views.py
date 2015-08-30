@@ -19,7 +19,7 @@ class PostResultsView(PostDetailView):
 
 class PostUpdateView(LoginRequiredMixin, UpdateView):
     #TODO: Add security layer so only admins can edit.
-    fields = ['title', 'description', 'tags', ]
+    fields = ['title', 'description', 'tags', 'published', ]
 
     model = Post
 
@@ -29,7 +29,7 @@ class PostUpdateView(LoginRequiredMixin, UpdateView):
 
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
-    fields = ('title', 'description')
+    fields = ['title', 'description', 'tags', 'published', ]
 
     def form_valid(self, form):
 
