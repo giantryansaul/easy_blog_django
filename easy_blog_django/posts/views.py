@@ -31,3 +31,5 @@ class PostCreateView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
 
         return super(PostCreateView, self).form_valid(form)
+
+

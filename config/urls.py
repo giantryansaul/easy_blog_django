@@ -21,6 +21,7 @@ urlpatterns = [
 
     # Blog apps
     url(r'^posts/', include('easy_blog_django.posts.urls', namespace="posts")),
+    url(r'^tags/', include('easy_blog_django.tags.urls', namespace="tags")),
     url(r'^$', include('easy_blog_django.home.urls')),
 
 

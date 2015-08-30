@@ -7,7 +7,6 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('posts', '0005_post_author'),
     ]
 
     operations = [
@@ -22,10 +21,5 @@ class Migration(migrations.Migration):
             options={
                 'abstract': False,
             },
-        ),
-        migrations.AddField(
-            model_name='post',
-            name='tags',
-            field=models.ManyToManyField(to='posts.Tag'),
         ),
     ]

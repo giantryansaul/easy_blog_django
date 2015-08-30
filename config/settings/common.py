@@ -46,6 +46,7 @@ LOCAL_APPS = (
     'easy_blog_django.users',  # custom users app
     'easy_blog_django.posts',  # posts app
     'easy_blog_django.home',  # home page app
+    'easy_blog_django.tags',  # tags module
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
