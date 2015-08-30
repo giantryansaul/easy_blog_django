@@ -4,6 +4,29 @@ from django.conf import settings
 from ..core.models import TimeStampedModel
 
 
+class TagManager(models.Manager):
+
+    use_for_related_fields = True
+
+    def partial_name(self, name, **kwargs):
+        return self.filter(name__iexact=name, **kwargs)
+
+    def exact_name(self, name, **kwargs):
+        return self.filter(name__exact=name, **kwargs)
+
+
+class Tag(TimeStampedModel):
+    """
+    Tags for posts.
+    """
+    name = models.CharField(max_length=255)
+
+    objects = TagManager()
+
+    def __str__(self):
+        return self.name
+
+
 class PostManager(models.Manager):
 
     use_for_related_fields = True
@@ -13,10 +36,18 @@ class PostManager(models.Manager):
 
 
 class Post(TimeStampedModel):
+    """
+    Model for Posts.
+    """
     title = models.CharField(max_length=255)
     description = models.TextField(blank=True)
     published = models.BooleanField(default=False)
     author = models.ForeignKey(settings.AUTH_USER_MODEL)
+    tags = models.ManyToManyField(Tag)
 
-    # Add custom model manager
     objects = PostManager()
+
+    def __str__(self):
+        return self.title
+
+
