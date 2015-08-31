@@ -21,6 +21,8 @@ class Tag(TimeStampedModel):
     name = models.CharField(max_length=255)
     author = models.BooleanField(default=False)
 
+    slug = models.SlugField(unique=True)
+
     objects = TagManager()
 
     def __str__(self):

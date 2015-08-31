@@ -2,20 +2,20 @@
 {% block title %}Homepage - {{ block.super }}{% endblock %}
 {% block content %}
 
-        <a href="{% url 'posts:detail' last_post.pk %}">
+        <a href="{% url 'posts:detail' last_post.slug %}">
             <h2>Latest Story: {{ last_post.title }}</h2>
         </a>
 
         {% for post in most_recent_posts %}
-        <a href="{% url 'posts:detail' post.pk %}">
+        <a href="{% url 'posts:detail' post.slug %}">
             <h4>{{ post.title }}</h4>
         </a>
         <small>{{ post.created }}</small><p/>
         <small>By {{ post.author.name }}</small>
         <p>
-            {{ post.description|safe|truncatewords:"140"|linebreaks }}
+            {{ post.description|safe|truncatewords:"20"|linebreaks }}
         </p>
-        <a href="{% url 'posts:detail' post.pk %}">
+        <a href="{% url 'posts:detail' post.slug %}">
             Read More
         </a>
         <p>&NoBreak;</p>
