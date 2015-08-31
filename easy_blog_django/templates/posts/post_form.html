@@ -4,7 +4,7 @@
 
 {% block content %}
     <h1>{{ post.title }}</h1>
-    <form class="form-horizontal" method="post" action="{% url 'posts:update' post.pk %}">
+    <form class="form-horizontal" method="post" action="{% url 'posts:update' post.slug %}">
         {% csrf_token %}
         {{ form|crispy }}
         <div class="control-group">

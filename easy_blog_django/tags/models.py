@@ -19,6 +19,7 @@ class Tag(TimeStampedModel):
     Tags for posts.
     """
     name = models.CharField(max_length=255)
+    author = models.BooleanField(default=False)
 
     objects = TagManager()
 

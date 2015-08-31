@@ -1,3 +1,4 @@
+from django.core.urlresolvers import reverse
 from django.db import models
 from django.conf import settings
 
@@ -23,9 +24,12 @@ class Post(TimeStampedModel):
     author = models.ForeignKey(settings.AUTH_USER_MODEL)
     tags = models.ManyToManyField(Tag)
 
+    slug = models.SlugField(unique=True)
+
     objects = PostManager()
 
     def __str__(self):
         return self.title
 
-
+    def get_absolute_url(self):
+        return reverse("posts:detail", kwargs={"slug": self.slug})

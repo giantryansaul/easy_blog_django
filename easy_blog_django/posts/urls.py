@@ -11,17 +11,17 @@ urlpatterns = [
         name="list"
     ),
     url(
-        regex=r"^(?P<pk>\d+)/$",
+        regex=r"^(?P<slug>[-\w]+)/$",
         view=views.PostDetailView.as_view(),
         name="detail"
     ),
     url(
-        regex=r"^(?P<pk>\d+)/results/$",
+        regex=r"^(?P<slug>[-\w]+)/results/$",
         view=views.PostResultsView.as_view(),
         name="results"
     ),
     url(
-        regex=r"^(?P<pk>\d+)/update/$",
+        regex=r"^(?P<slug>[-\w]+)/update/$",
         view=views.PostUpdateView.as_view(),
         name="update"
     )
