@@ -1,6 +1,8 @@
 from django.contrib import messages
 from django.views.generic import ListView, DetailView, UpdateView, CreateView
+from django.views.generic.list import MultipleObjectMixin
 from django.core.urlresolvers import reverse
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 from braces.views import LoginRequiredMixin
 
@@ -23,6 +25,7 @@ class PostActionMixIn(object):
 class PostListView(ListView):
 
     model = Post
+    paginate_by = 5
 
 
 class PostDetailView(DetailView):
