@@ -6,11 +6,11 @@
             <h2>Latest Story: {{ last_post.title }}</h2>
         </a>
 
-        {% for post in most_recent_posts %}
+        {% for post in post_list %}
         <a href="{% url 'posts:detail' post.slug %}">
             <h4>{{ post.title }}</h4>
         </a>
-        <small>{{ post.created }}</small><p/>
+        <small>{{ post.created }}</small>
         <small>By {{ post.author.name }}</small>
         <p>
             {{ post.description|safe|truncatewords:"20"|linebreaks }}
@@ -20,5 +20,21 @@
         </a>
         <p>&NoBreak;</p>
         {% endfor %}
+
+        <div class="pagination">
+            <span class="step-links">
+                {% if page_obj.has_previous %}
+                    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                {% endif %}
+
+                <span class="current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">next</a>
+                {% endif %}
+            </span>
+        </div>
 
 {% endblock %}

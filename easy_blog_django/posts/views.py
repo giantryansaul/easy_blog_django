@@ -24,8 +24,11 @@ class PostActionMixIn(object):
 
 class PostListView(ListView):
 
-    model = Post
-    paginate_by = 5
+    paginate_by = 20
+
+    posts = Post.objects.published()
+    posts = posts.order_by('-created')
+    queryset = posts
 
 
 class PostDetailView(DetailView):
