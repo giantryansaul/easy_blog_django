@@ -57,6 +57,9 @@
           </ul>
         
           <ul class="nav navbar-nav navbar-right">
+            <form action="{% url 'posts:list' %}" method="GET" class="navbar-form navbar-right">
+                <input type="text" name="q" class="form-control" placeholder="Search" />
+            </form>
             {% if request.user.is_authenticated %}
               <li><a href="{% url 'users:detail' request.user.username  %}">{% trans "My Profile" %}</a></li>
               <li><a href="{% url 'account_logout' %}">{% trans "Logout" %}</a></li>

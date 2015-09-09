@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Forbidden Page{% endblock %}
+
+{% block content %}
+<h1>Forbidden</h1>
+
+{% if request.user.is_authenticated %}
+  <p>You do not have permission to access this page.</p>
+{% else %}
+  <p>You must have an account to access this page.</p>
+  <a href="{% url 'account_signup' %}">Sign Up</a>
+  <a href="{% url 'account_login' %}">Log In</a>
+{% endif %}
+{% endblock content %}

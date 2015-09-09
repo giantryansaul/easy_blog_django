@@ -6,7 +6,11 @@
 
 <div class="container">
 
-    <h2>Past Posts</h2>
+    {% if perms.posts.change_post %}
+    <a class="btn btn-primary" href="{% url 'posts:add' %}">Create Post</a>
+    {% endif %}
+
+    <h2>Posts</h2>
 
     <div class="list-group">
         {% for post in post_list %}

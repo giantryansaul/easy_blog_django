@@ -4,12 +4,16 @@
 
 {% block content %}
     <h1>{{ post.title }}</h1>
+    {% if form.instance.pk %}
     <form class="form-horizontal" method="post" action="{% url 'posts:update' post.slug %}">
-        {% csrf_token %}
+    {% else %}
+    <form class="form-horizontal" method="post" action="{% url 'posts:add' %}">
+    {% endif %}
+       {% csrf_token %}
         {{ form|crispy }}
         <div class="control-group">
           <div class="controls">
-            <button type="submit" class="btn">Update Post</button>
+            <button type="submit" class="btn">Submit</button>
           </div>
         </div>
     </form>
