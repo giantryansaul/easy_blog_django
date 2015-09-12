@@ -16,7 +16,9 @@ class PostFormMixIn(object):
     model = Post
     form_class = PostForm
 
-
+    def get_initial(self):
+        self.initial.update({'author': self.request.user})
+        return super(PostFormMixIn, self).get_initial()
 
 
 class PostActionMixIn(object):
@@ -80,11 +82,6 @@ class PostUpdateView(LoginRequiredMixin, PermissionRequiredMixin, PostFormMixIn,
 
     success_msg = "Post Updated"
 
-    def get_form_kwargs(self):
-        kwargs = super(PostFormMixIn, self).get_form_kwargs()
-        kwargs['author'] = self.request.user
-        return kwargs
-
 
 class PostCreateView(LoginRequiredMixin, PermissionRequiredMixin, PostFormMixIn, PostActionMixIn, CreateView):
 
@@ -93,10 +90,6 @@ class PostCreateView(LoginRequiredMixin, PermissionRequiredMixin, PostFormMixIn,
 
     success_msg = "Post Created"
 
-    def get_form_kwargs(self):
-        kwargs = super(PostCreateView, self).get_form_kwargs()
-        kwargs['author'] = self.request.user
-        return kwargs
 
 
 
