@@ -5,6 +5,18 @@ from django.core.urlresolvers import reverse
 from braces.views import LoginRequiredMixin, PermissionRequiredMixin
 
 from .models import Post
+from .forms import PostForm
+
+
+class PostFormMixIn(object):
+    """
+    Common form methods
+    """
+
+    model = Post
+    form_class = PostForm
+
+
 
 
 class PostActionMixIn(object):
@@ -12,7 +24,6 @@ class PostActionMixIn(object):
     Overrides form_valid method to display a message after a form has been submitted.
     Returns user to the created or updated object.
     """
-    fields = ['title', 'description', 'tags', 'published', 'slug', 'author']
 
     @property
     def success_msg(self):
@@ -45,8 +56,6 @@ class PostSearchMixIn(object):
 
 class PostListView(PostSearchMixIn, ListView):
 
-    # TODO: slugify title
-
     paginate_by = 20
 
     posts = Post.objects.published()
@@ -64,23 +73,30 @@ class PostResultsView(PostDetailView):
     template_name = "posts/results.html"
 
 
-class PostUpdateView(LoginRequiredMixin, PermissionRequiredMixin, PostActionMixIn, UpdateView):
-
-    model = Post
+class PostUpdateView(LoginRequiredMixin, PermissionRequiredMixin, PostFormMixIn, PostActionMixIn, UpdateView):
 
     permission_required = 'posts.change_post'
     raise_exception = True
 
     success_msg = "Post Updated"
 
+    def get_form_kwargs(self):
+        kwargs = super(PostFormMixIn, self).get_form_kwargs()
+        kwargs['author'] = self.request.user
+        return kwargs
 
-class PostCreateView(LoginRequiredMixin, PermissionRequiredMixin, PostActionMixIn, CreateView):
 
-    model = Post
+class PostCreateView(LoginRequiredMixin, PermissionRequiredMixin, PostFormMixIn, PostActionMixIn, CreateView):
 
     permission_required = 'posts.add_post'
     raise_exception = True
 
     success_msg = "Post Created"
+
+    def get_form_kwargs(self):
+        kwargs = super(PostCreateView, self).get_form_kwargs()
+        kwargs['author'] = self.request.user
+        return kwargs
+
 
 

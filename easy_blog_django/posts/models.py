@@ -1,6 +1,7 @@
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.conf import settings
+from django.utils.text import slugify
 
 from ..core.models import TimeStampedModel
 from ..tags.models import Tag
@@ -22,7 +23,7 @@ class Post(TimeStampedModel):
     description = models.TextField(blank=True)
     published = models.BooleanField(default=False)
     author = models.ForeignKey(settings.AUTH_USER_MODEL)
-    tags = models.ManyToManyField(Tag)
+    tags = models.ManyToManyField(Tag, blank=True)
 
     slug = models.SlugField(unique=True)
 
@@ -33,3 +34,8 @@ class Post(TimeStampedModel):
 
     def get_absolute_url(self):
         return reverse("posts:detail", kwargs={"slug": self.slug})
+
+    def save(self, force_insert=False, force_update=False, using=None,
+             update_fields=None):
+        self.slug = slugify(self.title)
+        super(Post, self).save()
