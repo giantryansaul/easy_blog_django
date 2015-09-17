@@ -2,10 +2,6 @@
 {% block title %}Homepage - {{ block.super }}{% endblock %}
 {% block content %}
 
-        <a href="{% url 'posts:detail' last_post.slug %}">
-            <h2>Latest Story: {{ last_post.title }}</h2>
-        </a>
-
         {% for post in post_list %}
         <a href="{% url 'posts:detail' post.slug %}">
             <h4>{{ post.title }}</h4>

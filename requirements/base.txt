@@ -6,7 +6,6 @@ django-environ==0.3.0
 django-secure==1.0.1
 whitenoise==2.0.2
 
-
 # Forms
 django-braces==1.8.1
 django-crispy-forms==1.4.0
@@ -35,7 +34,3 @@ pytz==2015.4
 # Redis support
 django-redis==4.2.0
 redis>=2.10.0
-
-
-
-# Your custom requirements go here
