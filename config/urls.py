@@ -7,9 +7,9 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.views.generic import TemplateView
 
+from .settings.common import INSTALLED_APPS
+
 urlpatterns = [
-    #url(r'^$', TemplateView.as_view(template_name='pages/home.html'), name="index"),
-    #url(r'^$', include('easy_blog_django.home.views.index', namespace="home")),
     url(r'^about/$', TemplateView.as_view(template_name='pages/about.html'), name="about"),
 
     # Django Admin
@@ -17,7 +17,7 @@ urlpatterns = [
 
     # User management
     url(r'^users/', include("easy_blog_django.users.urls", namespace="users")),
-    url(r'^accounts/', include('allauth.urls')),
+
 
     # Blog apps
     url(r'^posts/', include('easy_blog_django.posts.urls', namespace="posts")),
@@ -26,6 +26,9 @@ urlpatterns = [
 
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+if 'allauth' in INSTALLED_APPS:
+    urlpatterns.append(url(r'^accounts/', include('allauth.urls')))
 
 if settings.DEBUG:
     # This allows the error pages to be debugged during development, just visit
