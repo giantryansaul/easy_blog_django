@@ -62,7 +62,9 @@
             </form>
             {% if request.user.is_authenticated %}
               <li><a href="{% url 'users:detail' request.user.username  %}">{% trans "My Profile" %}</a></li>
+              {% if ALLAUTH %}
               <li><a href="{% url 'account_logout' %}">{% trans "Logout" %}</a></li>
+              {% endif %}
             {% else %}
               {% if ALLAUTH %}
               <li><a href="{% url 'account_signup' %}">{% trans "Sign Up" %}</a></li>
