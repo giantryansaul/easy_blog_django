@@ -65,11 +65,8 @@
             <li><a href="{% url 'posts:list' %}">Posts</a></li>
             <li><a href="{% url 'tags:list' %}">Tags</a> </li>
             <li><a href="{% url 'about' %}">About</a></li>
-            <form action="{% url 'posts:list' %}" method="GET" class="navbar-form navbar-right">
-                <input type="text" name="q" class="form-control" placeholder="Search" />
-            </form>
             {% if request.user.is_authenticated %}
-            <li><a href="{% url 'users:detail' request.user.username  %}">{% trans "My Profile" %}</a></li>
+              <li><a href="{% url 'users:detail' request.user.username  %}">{% trans "My Profile" %}</a></li>
               {% if ALLAUTH %}
             <li><a href="{% url 'account_logout' %}">{% trans "Logout" %}</a></li>
               {% endif %}
@@ -79,6 +76,9 @@
             <li><a href="{% url 'account_login' %}">{% trans "Log In" %}</a></li>
               {% endif %}
             {% endif %}
+            <form action="{% url 'posts:list' %}" method="GET" class="navbar-form navbar-right">
+                <input type="text" name="q" class="form-control" placeholder="Search" />
+            </form>
           </ul>
         </div>
         <!-- /.navbar-collapse -->

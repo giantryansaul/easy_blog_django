@@ -2,35 +2,46 @@
 {% block title %}Homepage - {{ block.super }}{% endblock %}
 {% block content %}
 
-        {% for post in post_list %}
-        <a href="{% url 'posts:detail' post.slug %}">
-            <h4>{{ post.title }}</h4>
-        </a>
-        <small>{{ post.created }}</small>
-        <small>By {{ post.author.name }}</small>
-        <p>
-            {{ post.description|safe|truncatewords:"20"|linebreaks }}
-        </p>
-        <a href="{% url 'posts:detail' post.slug %}">
-            Read More
-        </a>
-        <p>&NoBreak;</p>
-        {% endfor %}
-
-        <div class="pagination">
-            <span class="step-links">
-                {% if page_obj.has_previous %}
-                    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
-                {% endif %}
-
-                <span class="current">
-                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-                </span>
-
-                {% if page_obj.has_next %}
-                    <a href="?page={{ page_obj.next_page_number }}">next</a>
-                {% endif %}
-            </span>
+     <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                {% for post in post_list %}
+                <div class="post-preview">
+                    <a href="{% url 'posts:detail' post.slug %}">
+                        <h2 class="post-title">
+                            {{ post.title }}
+                        </h2>
+                        <h3 class="post-subtitle">
+                            {{ post.description|safe|truncatewords:"20"|linebreaks }}
+                        </h3>
+                    </a>
+                    <p class="post-meta">Posted by {{ post.author.name }} on {{ post.created }}</p>
+                </div>
+                {% endfor %}
+                <nav>
+                    <ul class="pager">
+                        <li class="previous {% if page_obj.has_previous == False %}disabled{% endif %}">
+                            {% if page_obj.has_previous %}
+                            <a href="?page={{ page_obj.previous_page_number }}">
+                            {% endif %}
+                            <span aria-hidden="true">&larr; previous</span>
+                            {% if page_obj.has_previous %}</a>{% endif %}
+                        </li>
+                        <li class="current">
+                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                        </li>
+                        <li class="next {% if page_obj.has_next == False %}disabled{% endif %}">
+                            {% if page_obj.has_next %}
+                            <a href="?page={{ page_obj.next_page_number }}">
+                            {% endif %}
+                            <span aria-hidden="true">next &rarr;</span>
+                            {% if page_obj.has_next %}</a>{% endif %}
+                        </li>
+                    </ul>
+                </nav>
+            </div>
         </div>
+    </div>
+
 
 {% endblock %}
