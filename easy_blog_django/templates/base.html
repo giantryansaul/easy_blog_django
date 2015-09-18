@@ -60,6 +60,9 @@
           
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
+          <form action="{% url 'posts:list' %}" method="GET" class="navbar-form navbar-right">
+            <input type="text" name="q" class="form-control" placeholder="Search" />
+          </form>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="{% url 'home' %}">Home</a></li>
             <li><a href="{% url 'posts:list' %}">Posts</a></li>
@@ -76,10 +79,9 @@
             <li><a href="{% url 'account_login' %}">{% trans "Log In" %}</a></li>
               {% endif %}
             {% endif %}
-            <form action="{% url 'posts:list' %}" method="GET" class="navbar-form navbar-right">
-                <input type="text" name="q" class="form-control" placeholder="Search" />
-            </form>
+
           </ul>
+
         </div>
         <!-- /.navbar-collapse -->
       </div>
