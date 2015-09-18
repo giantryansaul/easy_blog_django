@@ -9,7 +9,9 @@
   <p>You do not have permission to access this page.</p>
 {% else %}
   <p>You must have an account to access this page.</p>
-  <a href="{% url 'account_signup' %}">Sign Up</a>
-  <a href="{% url 'account_login' %}">Log In</a>
+    {% if ALLAUTH %}
+      <a href="{% url 'account_signup' %}">Sign Up</a>
+      <a href="{% url 'account_login' %}">Log In</a>
+    {% endif %}
 {% endif %}
 {% endblock content %}
