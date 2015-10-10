@@ -1,0 +1,23 @@
+<nav>
+    <ul class="pager">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <li class="previous {% if page_obj.has_previous == False %}disabled{% endif %}">
+                {% if page_obj.has_previous %}
+                <a href="?page={{ page_obj.previous_page_number }}">
+                {% endif %}
+                <span aria-hidden="true">&larr; previous</span>
+                {% if page_obj.has_previous %}</a>{% endif %}
+            </li>
+            <li class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </li>
+            <li class="next {% if page_obj.has_next == False %}disabled{% endif %}">
+                {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">
+                {% endif %}
+                <span aria-hidden="true">next &rarr;</span>
+                {% if page_obj.has_next %}</a>{% endif %}
+            </li>
+        </div>
+    </ul>
+</nav>

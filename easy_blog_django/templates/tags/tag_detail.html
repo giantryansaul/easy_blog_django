@@ -4,15 +4,34 @@
 
 {% block content %}
 
-<div class="media">
-  <div class="media-body">
-    <h4 class="media-heading">{{ tag.name }}</h4>
-    <h5>Related Posts:</h5>
-    {% for post in posts %}
-        <a class="list-group-item" href="{% url 'posts:detail' post.slug %}">{{ post.title }}</a>
-    {% endfor %}
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url('{% static 'images/max_train.jpg' %}')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="site-heading">
+                        <h1>{{ tag.name }}</h1>
+                        <hr class="small">
+                        <span class="subheading">Related Posts</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
 
-  </div>
-</div>
+     <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                {% for post in posts %}
+                  <a href="{% url 'posts:detail' post.slug %}">
+                    <h4>{{ post.title }}</h4>
+                  </a>
+                {% endfor %}
+
+            </div>
+        </div>
+        {% include "pagination.html" %}
+    </div>
 
 {% endblock content %}
