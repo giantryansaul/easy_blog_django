@@ -54,3 +54,6 @@ node_modules/
 
 # virtual environments
 .env
+
+# media
+easy_blog_django/media/*
