@@ -80,6 +80,7 @@ class PostUpdateView(LoginRequiredMixin, PermissionRequiredMixin, PostFormMixIn,
     permission_required = 'posts.change_post'
     raise_exception = True
 
+
     success_msg = "Post Updated"
 
 

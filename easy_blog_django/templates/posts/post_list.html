@@ -21,7 +21,11 @@
     </header>
 
      <div class="container">
+
         <div class="row">
+            {% if perms.posts.change_post %}
+            <a class="btn btn-primary col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1" href="{% url 'posts:add' %}">Create New Post</a>
+            {% endif %}
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 {% for post in post_list %}
                     <a href="{% url 'posts:detail' post.slug %}">

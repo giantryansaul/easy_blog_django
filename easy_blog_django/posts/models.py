@@ -24,7 +24,7 @@ class Post(TimeStampedModel):
     published = models.BooleanField(default=False)
     author = models.ForeignKey(settings.AUTH_USER_MODEL)
     tags = models.ManyToManyField(Tag, blank=True)
-    header_image = models.ImageField(upload_to='headers')
+    header_image = models.ImageField(upload_to='headers', default='default_image.jpg')
 
     slug = models.SlugField(unique=True)
 
