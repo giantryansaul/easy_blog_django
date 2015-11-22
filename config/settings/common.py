@@ -39,6 +39,7 @@ THIRD_PARTY_APPS = (
     # 'allauth',  # registration
     # 'allauth.account',  # registration
     # 'allauth.socialaccount',  # registration
+    'django_wysiwyg',  # rich text editor
 )
 
 # Apps specific for this project go here.
@@ -51,6 +52,9 @@ LOCAL_APPS = (
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
+
+# Django-Wysiwyg settings, see: https://github.com/pydanny/django-wysiwyg
+DJANGO_WYSIWYG_FLAVOR = "ckeditor"
 
 # MIDDLEWARE CONFIGURATION
 # ------------------------------------------------------------------------------
