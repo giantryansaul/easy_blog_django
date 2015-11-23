@@ -17,4 +17,6 @@ django-storages-redux==1.2.3
 # ---------------
 django-mailgun==0.2.2
 
-
+# Heroku Postgres
+# -----------------------------------------------
+dj-database-url==0.3.0

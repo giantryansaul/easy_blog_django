@@ -119,7 +119,8 @@ TEMPLATES[0]['OPTIONS']['loaders'] = [
 # DATABASE CONFIGURATION
 # ------------------------------------------------------------------------------
 # Raises ImproperlyConfigured exception if DATABASE_URL not in os.environ
-DATABASES['default'] = env.db("DATABASE_URL")
+import dj_database_url
+DATABASES['default'] = dj_database_url.config()
 
 # CACHING
 # ------------------------------------------------------------------------------
