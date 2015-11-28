@@ -138,14 +138,3 @@ CACHES = {
 
 
 # Your production stuff: Below this line define 3rd party library settings
-
-import sys
-LOGGING = {
-    'handlers': {
-        'console':{
-            'level':'INFO',
-            'class':'logging.StreamHandler',
-            'stream': sys.stdout
-        },
-    }
-}
