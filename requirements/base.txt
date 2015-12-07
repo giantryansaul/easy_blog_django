@@ -35,3 +35,6 @@ pytz==2015.4
 # Redis support
 django-redis==4.2.0
 redis>=2.10.0
+
+# Sentry support
+raven==5.8.1
