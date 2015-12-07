@@ -143,5 +143,4 @@ import raven
 import os
 RAVEN_CONFIG = {
     'dsn': env('SENTRY_DSN'),
-    'release': raven.fetch_git_sha(os.path.dirname(__file__)),
 }
