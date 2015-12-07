@@ -136,5 +136,12 @@ CACHES = {
     }
 }
 
-
-# Your production stuff: Below this line define 3rd party library settings
+# SENTRY
+# ------------------------------------------------------------------------------
+# See: https://app.getsentry.com/
+import raven
+import os
+RAVEN_CONFIG = {
+    'dsn': env('SENTRY_DSN'),
+    'release': raven.fetch_git_sha(os.path.dirname(__file__)),
+}

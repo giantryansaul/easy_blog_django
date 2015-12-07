@@ -40,6 +40,7 @@ THIRD_PARTY_APPS = (
     # 'allauth.account',  # registration
     # 'allauth.socialaccount',  # registration
     'django_wysiwyg',  # rich text editor
+    'raven.contrib.django.raven_compat',  # for error logging
 )
 
 # Apps specific for this project go here.
