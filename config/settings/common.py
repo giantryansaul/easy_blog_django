@@ -12,7 +12,7 @@ from __future__ import absolute_import, unicode_literals
 
 import environ
 
-ROOT_DIR = environ.Path(__file__) - 3  # (/a/b/myfile.py - 3 = /)
+ROOT_DIR = environ.Path(__file__) - 3
 APPS_DIR = ROOT_DIR.path('easy_blog_django')
 
 env = environ.Env()
@@ -40,7 +40,6 @@ THIRD_PARTY_APPS = (
     # 'allauth.account',  # registration
     # 'allauth.socialaccount',  # registration
     'django_wysiwyg',  # rich text editor
-    'raven.contrib.django.raven_compat',  # for error logging
 )
 
 # Apps specific for this project go here.
@@ -239,7 +238,6 @@ AUTOSLUG_SLUGIFY_FUNCTION = 'slugify.slugify'
 # the site admins on every HTTP 500 error when DEBUG=False.
 # See http://docs.djangoproject.com/en/dev/topics/logging for
 # more details on how to customize your logging configuration.
-import sys
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -253,12 +251,6 @@ LOGGING = {
             'level': 'ERROR',
             'filters': ['require_debug_false'],
             'class': 'django.utils.log.AdminEmailHandler'
-        },
-        # Log errors to console
-        'console': {
-            'level': 'INFO',
-            'class': 'logging.StreamHandler',
-            'stream': sys.stdout
         }
     },
     'loggers': {
