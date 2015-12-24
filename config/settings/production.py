@@ -139,8 +139,7 @@ CACHES = {
 # SENTRY
 # ------------------------------------------------------------------------------
 # See: https://app.getsentry.com/
-import raven
-import os
+INSTALLED_APPS += ('raven.contrib.django.raven_compat', )
 RAVEN_CONFIG = {
     'dsn': env('SENTRY_DSN'),
 }

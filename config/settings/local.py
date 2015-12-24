@@ -70,11 +70,3 @@ INSTALLED_APPS += ('django_extensions', )
 TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 
 # Your local stuff: Below this line define 3rd party library settings
-
-# SENTRY
-# ------------------------------------------------------------------------------
-# See: https://app.getsentry.com/
-RAVEN_CONFIG = {
-    'dsn': env('SENTRY_DSN'),
-    'release': env('EASYREF'),
-}
