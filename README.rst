@@ -163,6 +163,7 @@ Run these commands to deploy the project to Heroku:
     heroku config:set PYTHONHASHSEED=random
     
     git push heroku master
+    heroku run python manage.py collectstatic --noinput
     heroku run python manage.py migrate
     heroku run python manage.py check --deploy
     heroku run python manage.py createsuperuser
