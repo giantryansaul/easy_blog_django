@@ -2,11 +2,12 @@
 
 Easy Blog Django is a simple blog project by [@giantryansaul].
 
-  - Simple home page layout that displays latest blog entries, date and author
-  - Tag support for organizing posts into categories
-  - User registration (but no ability to create comments yet)
-  - Highlight code blocks
-  - Highly customizable
+  - Simple home page layout that displays latest blog entries, date and author.
+  - Tag support for organizing posts into categories.
+  - User registration (but no ability to create comments yet).
+  - Highlight code blocks.
+  - Highly customizable.
+  - Markdown support by default, rich-text also supported.
 
 Huge thanks to [@audreyr] and [@pydanny] for the book [Two Scoops of Django] and their [cookiecutter] tool that greatly helped shape the design of this project.
 
@@ -14,16 +15,16 @@ Huge thanks to [@audreyr] and [@pydanny] for the book [Two Scoops of Django] and
 
 I intend to add features as they are needed on my own blogs or by popular request.
 
-  - User comments on posts
-  - Sample dataset for new blogs
-  - Heroku deployment
-  - EC2 deployment
-  - Docker deployment
-  - Unit tests (I know, I know, I should have created them before anything else, but this is my first project, so please be kind).
+  - User comments on posts.
+  - Sample dataset for new blogs.
+  - Heroku deployment.
+  - EC2 deployment.
+  - Docker deploymen.t
+  - More unit tests (I know, I know, I should have created them before anything else, but this is my first project, so please be kind).
 
 ### Version
 
-0.1.0
+0.2.0
 
 ### Tech used
 
@@ -35,7 +36,9 @@ Easy Blog uses many open source technolgies to run:
 * [Clean Blog] - Bootstrap template used for this blog.
 * [crispy-forms] - Django forms tool that automatically creates great-looking Bootstrap forms.
 * [ckeditor] - Rich text editor used on forms with code snippet support.
-* [django_wysiwyg] - Used to implement the above Rich Text Editor.
+* [django-wysiwyg] - Used to implement the above Rich Text Editor. From version 0.2.0 this has been disabled by default, markdown libraries now used instead.
+* [django-pagedown] - Used to write markdown in StackOverflow's style of editor.
+* [django-markdown-deux] - Used to render markdown.
 
 ### Setup
 
@@ -104,5 +107,6 @@ SOFTWARE.
    [@audreyr]: <https://github.com/audreyr>
    [@pydanny]: <https://github.com/pydanny>
    [crispy-forms]: <http://django-crispy-forms.readthedocs.org/>
-   [django_wysiwyg]: <https://github.com/pydanny/django-wysiwyg>
-
+   [django-wysiwyg]: <https://github.com/pydanny/django-wysiwyg>
+   [django-pagedown]: <https://github.com/timmyomahony/django-pagedown>
+   [django-markdown-deux]: <https://github.com/trentm/django-markdown-deux>

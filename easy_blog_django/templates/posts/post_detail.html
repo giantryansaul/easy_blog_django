@@ -31,6 +31,8 @@
                     {% endif %}
                     <i>{{ post.created.date }}</i>
                     <p>{{ post.description|safe|markdown }}</p>
+                    <!-- If using WYSIWYG, use this for description instead: -->
+                    <!-- <p>{{ post.description|safe|linebreaks }}</p> -->
                     <p></p>
                     {% for tag in post.tags.all %}
                         <b><a href="{% url 'tags:detail' tag.slug %}">{{ tag.name }} </a></b>

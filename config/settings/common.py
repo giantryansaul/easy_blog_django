@@ -34,14 +34,22 @@ DJANGO_APPS = (
     # Admin
     'django.contrib.admin',
 )
+
+EDITOR_APPS = (
+    # Markdown is the default editor, if you want to use WYSIWYG, please comment out
+    # pagedown and markdown_deux and enable django_wysiwyg. Tempates need to be modified
+    # to get this to work.
+
+    'pagedown',  # markdown editor https://github.com/timmyomahony/django-pagedown
+    'markdown_deux'  # markdown renderer https://github.com/trentm/django-markdown-deux
+    # 'django_wysiwyg',  # rich text editor https://github.com/pydanny/django-wysiwyg
+)
+
 THIRD_PARTY_APPS = (
     'crispy_forms',  # Form layouts https://github.com/maraujop/django-crispy-forms
     # 'allauth',  # registration
     # 'allauth.account',  # registration
     # 'allauth.socialaccount',  # registration
-    # 'django_wysiwyg',  # rich text editor https://github.com/pydanny/django-wysiwyg
-    'pagedown',  # markdown editor https://github.com/timmyomahony/django-pagedown
-    'markdown_deux'  # markdown renderer https://github.com/trentm/django-markdown-deux
 )
 
 # Apps specific for this project go here.
@@ -53,7 +61,7 @@ LOCAL_APPS = (
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
-INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
+INSTALLED_APPS = DJANGO_APPS + EDITOR_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
 # Django-Wysiwyg settings, see: https://github.com/pydanny/django-wysiwyg
 # DJANGO_WYSIWYG_FLAVOR = "ckeditor"
