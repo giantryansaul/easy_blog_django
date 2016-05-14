@@ -57,3 +57,6 @@ node_modules/
 
 # media
 easy_blog_django/media/*
+
+# static files
+staticfiles

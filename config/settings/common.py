@@ -35,12 +35,13 @@ DJANGO_APPS = (
     'django.contrib.admin',
 )
 THIRD_PARTY_APPS = (
-    'crispy_forms',  # Form layouts
+    'crispy_forms',  # Form layouts https://github.com/maraujop/django-crispy-forms
     # 'allauth',  # registration
     # 'allauth.account',  # registration
     # 'allauth.socialaccount',  # registration
-    # 'django_wysiwyg',  # rich text editor
-    'pagedown',  # markdown editor
+    # 'django_wysiwyg',  # rich text editor https://github.com/pydanny/django-wysiwyg
+    'pagedown',  # markdown editor https://github.com/timmyomahony/django-pagedown
+    'markdown_deux'  # markdown renderer https://github.com/trentm/django-markdown-deux
 )
 
 # Apps specific for this project go here.
