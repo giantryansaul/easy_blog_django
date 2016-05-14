@@ -31,8 +31,7 @@
                         </h2>
                         <h3 class="post-subtitle">
                             {{ post.description|safe|markdown|truncatewords:"20" }}
-                            <!-- If using WYSIWYG, use this for description instead: -->
-                            <!-- {{ post.description|safe|truncatewords:"20"|linebreaks }} -->
+                            <!-- If using WYSIWYG, use linebreaks instead of markdown -->
                         </h3>
                     </a>
                     <p class="post-meta">Posted by {{ post.author.name }} on {{ post.created.date }}</p>
